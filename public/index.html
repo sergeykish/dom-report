@@ -1,0 +1,7 @@
+<html lang="en"><head><title>DOM Report</title></head><body><h1>DOM Report</h1><p><button onclick="event.preventDefault()
+var names = Object.getOwnPropertyNames(window)
+var xhr = new XMLHttpRequest
+xhr.open('POST', '/Object.getOwnPropertyNames(window)')
+xhr.setRequestHeader('Content-Type', 'application/json')
+xhr.send(JSON.stringify(names))">Report Object.getOwnPropertyNames(window)</button></p>
+</body></html>
