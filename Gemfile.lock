@@ -1,0 +1,18 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    rack (2.2.2)
+    webrick (1.6.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  rack
+  webrick
+
+RUBY VERSION
+   ruby 2.6.6p146
+
+BUNDLED WITH
+   2.1.4
