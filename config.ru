@@ -1,7 +1,8 @@
 require 'rack'
+require 'rack/contrib'
 require 'pg'
 
-use Rack::Static, :urls => {"/" => 'index.html'}, :root => 'public'
+rack_static = Rack::Static.new(Rack::NotFound.new, :urls => [""],  :root => 'public', :index => 'index.html')
 
 run lambda { |env|
   case env['REQUEST_METHOD']
@@ -19,6 +20,6 @@ run lambda { |env|
     end
     [204, {}, []]
   when 'GET'
-    [404, {'Content-type' => 'text/plain'}, ['Not found']]
+    rack_static.call(env)
   end
 }

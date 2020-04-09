@@ -1,6 +1,12 @@
-<html lang="en"><head><title>DOM Report</title></head><body onload="event.preventDefault()
-try { var names = Object.getOwnPropertyNames(window)
-var xhr = new XMLHttpRequest
-xhr.open('POST', '/Object.getOwnPropertyNames(window)')
-xhr.setRequestHeader('Content-Type', 'application/json')
-xhr.send(JSON.stringify(names)) } catch (e) { document.body.appendChild(document.createTextNode(e)) }"><h1>DOM Report</h1><p>Report Object.getOwnPropertyNames(window) onload</p></body></html>
+<html lang="en"><head><title>DOM Report</title><style>script { display: block; font-family: monospace; white-space: pre; padding-left: 10px }
+script { border-left: 10px solid #D6F034 }
+html { max-width: 41em }
+h1, h2 { font-weight: normal }table { text-align: center }th, td { border-bottom: 1px solid black }
+</style></head><body><h1>DOM Report</h1><p>Your User Agent has <output id="outputLength">(requires javascript)</output> window properties.</p><script>outputLength.textContent = Object.getOwnPropertyNames(window).length</script><p>What are these? When were they introduced? Are they universal?</p><h2>Analysis</h2><p>We can get reliable, first hand information directly from User Agent:</p><table><tbody><tr><th></th><th>Firefox</th></tr><tr><td><a href="https://developer.mozilla.org/en-US/docs/Archive/B2G_OS/API/ContactManager">ContactManager</a></td><td>19-24</td></tr></tbody></table><p>We can plot data. Like globals count rising (Firefox):</p><table><thead><tr><th>version</th><th>count</th></tr></thead><tbody><tr><td>15</td><td>67</td></tr><tr><td>16</td><td>72</td></tr><tr><td>17</td><td>72</td></tr><tr><td>18</td><td>65</td></tr><tr><td>19</td><td>582</td></tr><tr><td>20</td><td>580</td></tr><tr><td>21</td><td>570</td></tr><tr><td>22</td><td>584</td></tr><tr><td>23</td><td>577</td></tr><tr><td>24</td><td>575</td></tr><tr><td>25</td><td>526</td></tr><tr><td>...</td><td>...</td></tr><tr><td>57</td><td>768</td></tr><tr><td>58</td><td>765</td></tr><tr><td>59</td><td>756</td></tr><tr><td>60</td><td>756</td></tr></tbody></table><p>And so much more! But first we need data.</p><h2>Report</h2><p>This can be easily achieved automatically by targeting User Agent to page containing</p><pre>window.onload = function () {
+  event.preventDefault()
+  var names = Object.getOwnPropertyNames(window)
+  var xhr = new XMLHttpRequest
+  xhr.open('POST', '/feature')
+  xhr.setRequestHeader('Content-Type', 'application/json')
+  xhr.send(JSON.stringify(names))
+}</pre><p>And storing it on backend as <code>(useragent, feature, result)</code>.</p><h2>Status</h2><p>Initial analysis completed on <a href="http://browsershots.org/"> Browsershots</a>. UI is perfect for my needs. Looks like data requires cleanup and I definitely need much more.</p></body></html>

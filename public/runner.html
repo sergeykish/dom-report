@@ -1,0 +1,6 @@
+<html lang="en"><head><title>DOM Report</title></head><body onload="event.preventDefault()
+try { var names = Object.getOwnPropertyNames(window)
+var xhr = new XMLHttpRequest
+xhr.open('POST', '/Object.getOwnPropertyNames(window)')
+xhr.setRequestHeader('Content-Type', 'application/json')
+xhr.send(JSON.stringify(names)) } catch (e) { document.body.appendChild(document.createTextNode(e)) }"><h1>DOM Report</h1><p>Report Object.getOwnPropertyNames(window) onload</p></body></html>
