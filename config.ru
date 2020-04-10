@@ -2,7 +2,8 @@ require 'rack'
 require 'rack/contrib'
 require 'pg'
 
-rack_static = Rack::Static.new(Rack::NotFound.new, :urls => [""],  :root => 'public', :index => 'index.html')
+rack_static = Rack::TryStatic.new(Rack::NotFound.new, :urls => %w[/], :root => 'public',
+  :index => 'index.html', :try => ['.html'])
 
 run lambda { |env|
   case env['REQUEST_METHOD']
