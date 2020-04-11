@@ -9,13 +9,14 @@ run lambda { |env|
   case env['REQUEST_METHOD']
   when 'POST'
     useragent = env['HTTP_USER_AGENT']
+    feature = env["PATH_INFO"]
     content = env['rack.input'].read
 
     uri = URI.parse(ENV['DATABASE_URL'])
     begin
       connection = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
-      connection.prepare 'insert', "INSERT INTO reports VALUES($1, $2)"
-      connection.exec_prepared 'insert', [useragent, content]
+      connection.prepare 'insert', "INSERT INTO reports VALUES(DEFAULT, $1, $2, $3)"
+      connection.exec_prepared 'insert', [useragent, feature, content]
     ensure
       connection.close if connection
     end

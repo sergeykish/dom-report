@@ -1,0 +1,6 @@
+<html lang="en"><head><title>Runner Object.getOwnPropertyNames(window)</title></head><body onload="event.preventDefault()
+try { var names = Object.getOwnPropertyNames(window)
+var xhr = new XMLHttpRequest
+xhr.open('POST', 'object-getownpropertynames-window')
+xhr.setRequestHeader('Content-Type', 'application/json')
+xhr.send(JSON.stringify(names)) } catch (e) { document.body.appendChild(document.createTextNode(e)) }"><h1>Runner Object.getOwnPropertyNames(window)</h1></body></html>
